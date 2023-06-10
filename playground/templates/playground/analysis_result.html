@@ -1,0 +1,72 @@
+{% extends 'playground/base.html' %}
+
+{% block content %}
+    <h2>Website Analysis</h2>
+    <p>URL: <a href="{{ url }}">{{ url }}</a></p>
+    <a href="{% url 'download_keywords' %}" class="btn btn-primary mt-3 mb-3">Download Keywords</a>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4">
+                <h3>TextRank Keywords:</h3>
+                <ul>
+                    {% for keyword, count in textrank_keywords %}
+                    {% if count > 0 %}
+                    <li>{{ keyword }} ({{ count }})</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4">
+                <h3>Titles:</h3>
+                <ul>
+                    {% for title in titles %}
+                    <li>{% autoescape off %}{{ title }}{% endautoescape %}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4">
+                <h3>Top Keywords:</h3>
+                <ul>
+                    {% for keyword, count in top_keywords %}
+                    <li>{{ keyword }} ({{ count }})</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-12 col-md-4 col-lg-4">
+                <h3>Header Links:</h3>
+                <ul>
+                    {% for link in header_links %}
+                    <li><a href="{% url 'playground:subpage_analysis_result' %}?header_link={{ link }}">{{ link }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="row bg-dark text-white pt-3 pb-3 mt-3 mb-3">
+                <div class="col-12 col-md-4 col-lg-4">
+                    <h3>All Keywords:</h3>
+                    <ul>
+                        {% for keyword, count in keywords %}
+                        <li>{{ keyword }} ({{ count }})</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                    <h3>Repeatable Words:</h3>
+                    <ul>
+                        {% for word in repeatable_words %}
+                        <li>{{ word }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4">
+                    <h3>Bi-grams:</h3>
+                    <ul>
+                        {% for bigram in bigrams %}
+                        <li>{{ bigram }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

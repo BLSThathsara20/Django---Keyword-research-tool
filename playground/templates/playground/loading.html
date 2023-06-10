@@ -1,0 +1,30 @@
+{% extends 'playground/base.html' %}
+
+{% block content %}
+    <h2>Loading...</h2>
+    <p>Please wait while the website analysis is in progress.</p>
+    <div id="loading-spinner"></div>
+
+    <form method="post" action="{% url 'analyze_website' %}">
+        {% csrf_token %}
+        <input type="text" name="url" placeholder="Enter URL" required>
+        <button type="submit">Analyze</button>
+    </form>
+
+    <style>
+        #loading-spinner {
+            margin: 20px auto;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+{% endblock %}

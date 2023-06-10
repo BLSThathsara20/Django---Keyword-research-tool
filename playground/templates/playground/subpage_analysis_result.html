@@ -1,0 +1,48 @@
+<!-- subpage_analysis_result.html -->
+<h1>Subpage Analysis Result</h1>
+<p>URL: {{ url }}</p>
+
+<p>Keywords:</p>
+<ul>
+  {% for keyword in keywords %}
+    <li>{{ keyword }}</li>
+  {% empty %}
+    <li>No keywords found.</li>
+  {% endfor %}
+</ul>
+
+<p>Titles:</p>
+<ul>
+  {% for title in titles %}
+    <li>{{ title }}</li>
+  {% empty %}
+    <li>No titles found.</li>
+  {% endfor %}
+</ul>
+
+<p>Header Links:</p>
+<ul>
+  {% for header_link in header_links %}
+    <li>{{ header_link }}</li>
+  {% empty %}
+    <li>No header links found.</li>
+  {% endfor %}
+</ul>
+
+<p>Repeatable Words:</p>
+<ul>
+  {% for repeatable_word in repeatable_words %}
+    <li>{{ repeatable_word }}</li>
+  {% empty %}
+    <li>No repeatable words found.</li>
+  {% endfor %}
+</ul>
+
+<p>Bi-grams:</p>
+<ul>
+  {% for bigram in bigrams %}
+    <li>{{ bigram }}</li>
+  {% empty %}
+    <li>No bi-grams found.</li>
+  {% endfor %}
+</ul>

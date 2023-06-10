@@ -1,0 +1,25 @@
+<h2>Analyze Website</h2>
+
+<form method="post" action="{% url 'analyze_website' %}">
+    {% csrf_token %}
+    <input type="text" name="url" placeholder="Enter website URL">
+    <button type="submit">Analyze</button>
+    <button type="button" onclick="clearForm()">Clear</button>
+</form>
+
+<h3>Previously Searched URLs:</h3>
+<ul>
+    {% for url in url_list %}
+        <li><a href="#" onclick="setInputValue('{{ url }}')">{{ url }}</a></li>
+    {% endfor %}
+</ul>
+
+<script>
+    function clearForm() {
+        document.querySelector('form').reset();
+    }
+
+    function setInputValue(url) {
+        document.querySelector('input[name="url"]').value = url;
+    }
+</script>
