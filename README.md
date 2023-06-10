@@ -14,3 +14,32 @@ Follow these simple steps to set up and run My Django Tool on your local machine
 
    ```bash
    git clone https://github.com/your-username/my-django-tool.git
+
+1. **Navigate to the project directory:**
+    ```bash
+   cd my-django-tool
+
+2. **Create a virtual environment:**
+    ```bash
+   python -m venv env
+
+3. **Activate the virtual environment:**
+    ```bash
+    .\env\Scripts\activate
+
+4. **Install the dependencies:**
+    ```bash
+   pip install -r requirements.txt
+
+5. **Run database migrations:**
+    ```bash
+   python manage.py migrate
+
+6. **Start the development server:**
+    ```bash
+   python manage.py runserver
+
+
+
+
+
